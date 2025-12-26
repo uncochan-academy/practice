@@ -22,5 +22,5 @@ void loop() {
   sensor.update();
   int distance = sensor.getDistance();
   buzzer.update(distance);
-  display.displayNumber(distance);
+  display.setNumber(distance);  // displayNumber → setNumber に変更
 }
