@@ -57,9 +57,22 @@ void SevenSegmentDisplay::begin() {
 }
 
 void SevenSegmentDisplay::setNumber(int num) {
-  // 表示する数値を設定
-  displayValue = num;
-  calculateDigitPatterns();
+  // エラーチェック: 負の値（エラー）の場合は全消灯
+  if (num < 0) {
+    // 全桁を消灯パターンに設定
+    for (int i = 0; i < 4; i++) {
+      digitPatterns[i] = 10;  // 消灯パターン
+    }
+    displayValue = num;  // エラー値も保持（デバッグ用）
+  } else {
+    // 正常値の範囲チェック
+    if (num > 9999) {
+      displayValue = 9999;  // 4桁の最大値でクリップ
+    } else {
+      displayValue = num;
+    }
+    calculateDigitPatterns();
+  }
 }
 
 void SevenSegmentDisplay::calculateDigitPatterns() {

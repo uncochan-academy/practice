@@ -24,8 +24,19 @@ const int DIGIT_PINS[] = {8, 3, 4, 5};  // 4桁の制御ピン
 // ハードウェア定数
 // ========================================
 
+// === センサーステータス定義 ===
+enum SensorStatus {
+  STATUS_OUT_OF_RANGE = -1,    // 測定範囲外（400cm超過または1cm未満）
+  STATUS_NO_ECHO = -2,         // エコー応答なし（将来の拡張用）
+  STATUS_TIMEOUT = -3          // タイムアウト（将来の拡張用）
+};
+
 // センサー測定間隔（ミリ秒）
 const int SENSOR_INTERVAL = 150;
+
+// 正常な距離の範囲
+const int MAX_DISTANCE_CM = 400;
+const int MIN_DISTANCE_CM = 1;  // 0cmはエラーとする
 
 // 7セグメント数字パターン（0-9と消灯）
 const byte NUM_PATTERNS[] = {

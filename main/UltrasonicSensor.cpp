@@ -47,8 +47,13 @@ void UltrasonicSensor::update() {
 
     // 距離計算
     int dist = d * 0.034 / 2;
-    if (dist > 400 || dist <= 0) dist = 999;  // 範囲外処理
-    currentDistance = dist;
+
+    // 範囲チェック
+    if (dist > MAX_DISTANCE_CM || dist < MIN_DISTANCE_CM) {
+      currentDistance = STATUS_OUT_OF_RANGE;  // enumを使用
+    } else {
+      currentDistance = dist;
+    }
   }
 }
 
