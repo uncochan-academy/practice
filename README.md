@@ -2,7 +2,7 @@
 
 ## Project Purpose
 
-This is a development practice project to gain broad knowledge across the full stack for coordinating software development at work.
+This is a development practice project to gain broad, full-stack knowledge for coordinating software development at work.
 
 ## Current Status
 
@@ -22,6 +22,9 @@ This is a development practice project to gain broad knowledge across the full s
 #### main\main.ino
 
 - Created a project using Arduino that measures distance with an ultrasonic sensor and displays it on an active buzzer and 4-digit 7-segment display.
+- Data layer: Raw data
+- Business logic layer: Data validation checks
+- Presentation layer: UI processing for 7-segment display and buzzer
 
 ### Development Environment
 
@@ -41,8 +44,8 @@ This is a development practice project to gain broad knowledge across the full s
 1. Processing was stopped while waiting for sensor information to return.
    - Don't use delay.
    - Defer processing.
-   - Used special pins (interrupts).
-2. Physical issue where switches rapidly turned on/off (chattering).
+   - Used special pins.
+2. Physical issue where switches rapidly turned on/off.
    - Group on/off events within a few seconds into a single input.
 
 ### Understanding Level
@@ -64,11 +67,13 @@ This is a development practice project to gain broad knowledge across the full s
 - Conditional compilation for flexible hardware adaptation.
 - Separate high-level presentation layer from low-level data layer.
   This means separating accurate raw data for logging/analysis from UI-optimized smoothed data.
+- Control whether to display debug serial monitor with conditional compilation.
 
 #### Study Topics
 
 - Enable environment changes according to development stage.
    - Migrate from Arduino IDE to Arduino CLI, PlatformIO,
+
      CMake, Makefiles to customize build system.
    - Conditional compilation.
    - How to set up CI.
@@ -76,6 +81,8 @@ This is a development practice project to gain broad knowledge across the full s
    - Modularization to easily adapt to hardware and peripheral changes.
    - Abstraction and layering.
 
+   - Considered implementing proper layers, but might keep it lightweight.
+   - Want to try implementing Observer pattern.
 
 ### Check
 
